@@ -1,4 +1,5 @@
 import string
+import random
 from password.new_password import generate_password
 
 def test_password_characters():
@@ -8,10 +9,16 @@ def test_password_characters():
     for char in password:
         assert char in valid_characters
 
-"""
-Допиши еще один тест из предложенных. Или придумай свой.
-Если сможешь написать больше, то будет круто!
 
-Тест, что длина пароля соответствует заданной
-Тест, что два сгенерированных подряд пароля различаются
-"""
+def test_equaling():
+    for i in range(100):
+        integ = random.randint(1,100)
+        password = generate_password(integ)
+        assert len(password) == integ
+
+
+def test_compare():
+    for i in range(10):
+        first = generate_password(3)
+        second = generate_password(3)
+        assert first != second
